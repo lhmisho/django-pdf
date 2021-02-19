@@ -10,3 +10,7 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class CustomerPdf(models.Model):
+    pdf_file = models.FileField(upload_to="media", null=True, blank=True, default=None)

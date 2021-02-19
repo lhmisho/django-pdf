@@ -17,7 +17,7 @@ def customer_render_pdf_view(request, *args, **kwargs):
     pk = kwargs.get('pk')
     customer = get_object_or_404(Customer, pk=pk)
     template_path = 'pdf2.html'
-    context = {'customer': customer}
+    context = {'customer': customer, 'name' : 'মোহাম্মদ লোকমান হোসেন মিশু'}
 
     # Create a Django response object, and specify content_type as pdf
     response = HttpResponse(content_type='application/pdf')
@@ -33,7 +33,7 @@ def customer_render_pdf_view(request, *args, **kwargs):
 
     # create a pdf
     pisa_status = pisa.CreatePDF(
-        html, dest=response)
+        html, dest=response, encoding="UTF-8")
     # if error then show some funy view
     if pisa_status.err:
         return HttpResponse('We had some errors <pre>' + html + '</pre>')

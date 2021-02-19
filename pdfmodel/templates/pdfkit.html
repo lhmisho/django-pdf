@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %} Customers {% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-center">
+                <img height="100px" width="200px"
+                     src="https://www.moumaachi.com/business/upload/company/cover/jamuna-bank-atm-panthapath.jpg"
+                     alt="">
+            </div>
+        </div>
+        <hr>
+        <div class="col-md-12">
+            <h2 class="text-center text-uppercase">KYC Informations</h2>
+            <table class="table table-sm table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Heading</th>
+                    <th scope="col">Content</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong>Applicant's Name</strong></td>
+                    <td><strong>:</strong> {{ data.person.name_en }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Applicant's Name (Bangla)</strong></td>
+                    <td><strong>:</strong> {{ data.person.name_bn }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Father Name</strong></td>
+                    <td><strong>:</strong> {{ data.person.father_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Mother Name</strong></td>
+                    <td><strong>:</strong> {{ data.person.mother_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Spuse Name</strong></td>
+                    <td><strong>:</strong> {{ data.person.spouse_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Date Of Birth</strong></td>
+                    <td>{{ data.person.date_of_birth }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Gender</strong></td>
+                    <td><strong>:</strong> {{ data.person.gender }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Occupation</strong></td>
+                    <td><strong>:</strong> {{ data.profession.name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Mobile Number</strong></td>
+                    <td><strong>:</strong> {% for number in data.mobile_numbers %}{{ number.mobile_no }}{% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>NID Number</strong></td>
+                    <td><strong>:</strong> {{ data.person.nid_number }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Email Address (Optional)</strong></td>
+                    <td><strong>:</strong> {% for email in data.emails %}{{ email.email_address }}{% endfor %}</td>
+                </tr>
+                <tr>
+                    <td><strong>Nationality</strong></td>
+                    <td><strong>:</strong> {{ data.person.nationality }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Transaction Limit</strong></td>
+                    <td><strong>:</strong> {{ data.account.transaction_limit }}</td>
+                </tr>
+                <tr>
+                    <td><strong>E-TIN number</strong></td>
+                    <td><strong>:</strong> {{ data.person.tin }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Present Address</strong></td>
+                    <td><strong>:</strong> {{ data.address.present_address }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Permanent address</strong></td>
+                    <td><strong>:</strong> {{ data.address.permanent_address }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <div class="col-md-12">
+            <h2>Nominee Informations</h2>
+            {% for nominee in data.nominees %}
+            <table class="table table-sm table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Heading</th>
+                    <th scope="col">Content</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong>Nominee Name</strong></td>
+                    <td><strong>:</strong> {{ nominee.name_en }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Relation with Nominee</strong></td>
+                    <td><strong>:</strong> {{ nominee.relation_with_nominee }}</td>
+                </tr>
+                </tbody>
+            </table>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
